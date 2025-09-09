@@ -14,7 +14,184 @@ export type Database = {
   }
   public: {
     Tables: {
-      [_ in never]: never
+      inventory_items: {
+        Row: {
+          created_at: string
+          created_by: string | null
+          current_stock: number
+          id: string
+          item_code: string
+          item_name: string
+          last_rate: number
+          total_value: number
+          unit_of_measurement: string
+          updated_at: string
+          updated_by: string | null
+        }
+        Insert: {
+          created_at?: string
+          created_by?: string | null
+          current_stock?: number
+          id?: string
+          item_code: string
+          item_name: string
+          last_rate?: number
+          total_value?: number
+          unit_of_measurement: string
+          updated_at?: string
+          updated_by?: string | null
+        }
+        Update: {
+          created_at?: string
+          created_by?: string | null
+          current_stock?: number
+          id?: string
+          item_code?: string
+          item_name?: string
+          last_rate?: number
+          total_value?: number
+          unit_of_measurement?: string
+          updated_at?: string
+          updated_by?: string | null
+        }
+        Relationships: []
+      }
+      stock_consumption: {
+        Row: {
+          created_at: string
+          created_by: string | null
+          date: string
+          id: string
+          item_code: string
+          item_name: string
+          purpose_activity_code: string
+          quantity_used: number
+          remarks: string | null
+          used_by: string
+        }
+        Insert: {
+          created_at?: string
+          created_by?: string | null
+          date: string
+          id?: string
+          item_code: string
+          item_name: string
+          purpose_activity_code: string
+          quantity_used: number
+          remarks?: string | null
+          used_by: string
+        }
+        Update: {
+          created_at?: string
+          created_by?: string | null
+          date?: string
+          id?: string
+          item_code?: string
+          item_name?: string
+          purpose_activity_code?: string
+          quantity_used?: number
+          remarks?: string | null
+          used_by?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "stock_consumption_item_code_fkey"
+            columns: ["item_code"]
+            isOneToOne: false
+            referencedRelation: "inventory_items"
+            referencedColumns: ["item_code"]
+          },
+        ]
+      }
+      stock_receipts: {
+        Row: {
+          created_at: string
+          created_by: string | null
+          delivery_date: string
+          id: string
+          item_code: string
+          item_name: string
+          quantity_received: number
+          rate_per_unit: number
+          received_by: string
+          supplier_name: string
+          total_value: number
+          unit_of_measurement: string
+        }
+        Insert: {
+          created_at?: string
+          created_by?: string | null
+          delivery_date: string
+          id?: string
+          item_code: string
+          item_name: string
+          quantity_received: number
+          rate_per_unit: number
+          received_by: string
+          supplier_name: string
+          total_value: number
+          unit_of_measurement: string
+        }
+        Update: {
+          created_at?: string
+          created_by?: string | null
+          delivery_date?: string
+          id?: string
+          item_code?: string
+          item_name?: string
+          quantity_received?: number
+          rate_per_unit?: number
+          received_by?: string
+          supplier_name?: string
+          total_value?: number
+          unit_of_measurement?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "stock_receipts_item_code_fkey"
+            columns: ["item_code"]
+            isOneToOne: false
+            referencedRelation: "inventory_items"
+            referencedColumns: ["item_code"]
+          },
+        ]
+      }
+      transaction_logs: {
+        Row: {
+          action: string
+          created_by: string | null
+          id: string
+          item_code: string
+          item_name: string
+          quantity: number
+          timestamp: string
+          type: string
+          user_name: string
+        }
+        Insert: {
+          action: string
+          created_by?: string | null
+          id?: string
+          item_code: string
+          item_name: string
+          quantity: number
+          timestamp?: string
+          type: string
+          user_name: string
+        }
+        Update: {
+          action?: string
+          created_by?: string | null
+          id?: string
+          item_code?: string
+          item_name?: string
+          quantity?: number
+          timestamp?: string
+          type?: string
+          user_name?: string
+        }
+        Relationships: []
+      }
     }
     Views: {
       [_ in never]: never
