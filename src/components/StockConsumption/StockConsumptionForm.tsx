@@ -109,7 +109,7 @@ export function StockConsumptionForm() {
                     <SelectValue placeholder="Select item to consume" />
                   </SelectTrigger>
                   <SelectContent>
-                    {sampleInventoryItems.map((item) => (
+                    {inventoryItems?.map((item) => (
                       <SelectItem key={item.id} value={item.itemCode}>
                         {item.itemCode} - {item.itemName} (Stock: {item.currentStock})
                       </SelectItem>
