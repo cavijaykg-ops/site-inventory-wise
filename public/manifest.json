@@ -1,0 +1,20 @@
+{
+  "name": "Inventory Pro - Site Management",
+  "short_name": "Inventory Pro",
+  "description": "Professional on-site inventory management app for construction sites",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#fefefe",
+  "theme_color": "#f97316",
+  "icons": [
+    {
+      "src": "https://lovable.dev/opengraph-image-p98pqg.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ],
+  "categories": ["business", "productivity", "utilities"],
+  "scope": "/",
+  "orientation": "portrait"
+}
